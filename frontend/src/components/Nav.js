@@ -1,6 +1,17 @@
 import "../css/nav.css";
+import { useContext } from "react";
+import { Context } from "../contexts/Context";
 
 export const Nav = () => {
+  const { isLoginShown, setLoginShown } = useContext(Context);
+
+  // When log in is clicked from navbar
+  const handleClick = () => {
+    console.log('clicked')
+    let isVisible = !isLoginShown
+    setLoginShown(isVisible)
+  }
+
   return (
     <div className="nav-container">
       <div className="hamburger">Ham</div>
@@ -9,8 +20,8 @@ export const Nav = () => {
       <div className="title">Title</div>
       <div className="option-wrapper">
         <div className="acct-nav-btns">
-          <div className="login-btn">Log In</div>
-          <div>|</div>
+          <div className="login-btn" onClick={handleClick}>Log In</div>
+          <span>|</span>
           <div className="create-acct-btn">Create Account</div>
         </div>
         <div className="search-box">Search</div>
