@@ -1,3 +1,40 @@
 .nav-container {
-    background-color: blue;
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    padding: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F6F6F6;
+}
+
+.option-wrapper {
+    width: 290px;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .8rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.acct-nav-btns {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.search-box {
+    background-color: #FFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.cart-on-nav {
+    background-color: #FFF;
+    height: 40px;
+    width: 70px;
+    border-radius: 10px;
 }
