@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #F6F6F6;
+    background-color: var(--nav-color);
 }
 
 .option-wrapper {
@@ -26,14 +26,14 @@
 }
 
 .search-box {
-    background-color: #FFF;
+    background-color: var(--primary-color);
     width: 40px;
     height: 40px;
     border-radius: 10px;
 }
 
 .cart-on-nav {
-    background-color: #FFF;
+    background-color: var(--primary-color);
     height: 40px;
     width: 70px;
     border-radius: 10px;

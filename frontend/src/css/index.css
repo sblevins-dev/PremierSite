@@ -3,3 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html, body, #root {
+  scroll-behavior: smooth;
+  --nav-color: #dadada;
+  --primary-color: #F6F6F6;
+  --gray-font: rgb(90, 90, 90);
+}

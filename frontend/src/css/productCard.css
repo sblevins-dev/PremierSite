@@ -1,0 +1,30 @@
+.product-card-wrapper {
+    height: 385px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-card {
+    height: 300px;
+    width: 243px;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin: 20px;
+    border-radius: 60px;
+}
+
+.product-details {
+    margin-left: 25px;
+}
+
+.product-name {
+    margin-bottom: 5px;
+    color: var(--gray-font);
+}
+
+.product-price {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
