@@ -1,5 +1,5 @@
 import "./css/nav.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Context } from "./contexts/Context";
 import { Nav } from "./components/Nav";
 import { Login } from "./components/Login"
@@ -10,8 +10,10 @@ function App() {
 
   const [isLoginShown, setLoginShown] = useState(false);
 
+  const loginRef = useRef()
+
   return (
-    <Context.Provider value={{ isLoginShown, setLoginShown }}>
+    <Context.Provider value={{ isLoginShown, setLoginShown, loginRef }}>
       <div className="App">
         <Nav />
         {isLoginShown && <Login />}

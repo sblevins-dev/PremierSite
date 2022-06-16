@@ -7,7 +7,6 @@ export const Nav = () => {
 
   // When log in is clicked from navbar
   const handleClick = () => {
-    console.log('clicked')
     let isVisible = !isLoginShown
     setLoginShown(isVisible)
   }
