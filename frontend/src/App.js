@@ -9,11 +9,13 @@ import { Footer } from "./components/Footer";
 function App() {
 
   const [isLoginShown, setLoginShown] = useState(false);
+  const [isRegisterShown, setRegisterShown] = useState(false);
 
   const loginRef = useRef()
+  const registerRef = useRef()
 
   return (
-    <Context.Provider value={{ isLoginShown, setLoginShown, loginRef }}>
+    <Context.Provider value={{ isLoginShown, setLoginShown, loginRef, isRegisterShown, setRegisterShown, registerRef }}>
       <div className="App">
         <Nav />
         {isLoginShown && <Login />}
