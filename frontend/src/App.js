@@ -2,7 +2,8 @@ import "./css/nav.css";
 import { useState, useRef } from "react";
 import { Context } from "./contexts/Context";
 import { Nav } from "./components/Nav";
-import { Login } from "./components/Login"
+import { Login } from "./components/Login";
+import { Register } from "./components/Register";
 import { Home } from "./components/Home";
 import { Footer } from "./components/Footer";
 
@@ -19,6 +20,7 @@ function App() {
       <div className="App">
         <Nav />
         {isLoginShown && <Login />}
+        {isRegisterShown && <Register />}
         <Home />
         <Footer />
       </div>
