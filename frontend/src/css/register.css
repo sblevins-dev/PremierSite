@@ -28,3 +28,9 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+.log-in-link {
+    color: rgb(19, 102, 135);
+    font-weight: bold;
+    cursor: pointer;
+}
