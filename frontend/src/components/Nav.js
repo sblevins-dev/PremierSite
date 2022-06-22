@@ -9,12 +9,14 @@ export const Nav = () => {
   const handleLoginClick = () => {
     let isVisible = !isLoginShown
     setLoginShown(isVisible)
+    setRegisterShown(!isVisible)
   }
 
   // When log in is clicked from navbar
   const handleRegisterClick = () => {
     let isVisible = !isRegisterShown
     setRegisterShown(isVisible)
+    setLoginShown(!isVisible)
   }
 
   return (

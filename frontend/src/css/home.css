@@ -16,7 +16,11 @@
 }
 
 .categories-wrapper span {
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: all 0.4s ease-in-out;
 }
 
 .hero {
@@ -27,17 +31,6 @@
     border-radius: 60px;
     animation-name: slideUp;
     animation-duration: 1s;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
 }
 
 .featured-wrapper {
@@ -72,4 +65,25 @@
 .featured-product-wrapper {
     height: 500px;
     background-color: aliceblue;
+}
+
+.product-item {
+    opacity: 0;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media (hover: hover) {
+    .categories-wrapper span:hover {
+        background-color: rgb(194, 194, 194);
+    }
 }
