@@ -1,5 +1,5 @@
 import "../css/register.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../contexts/Context";
 import { Transition } from "react-transition-group";
 
@@ -9,24 +9,31 @@ export const Register = () => {
 
   const [mountProp, setMountProp] = useState(false);
 
-  // add event listener
+  const nodeRef = useRef(null)
+
   useEffect(() => {
+    // handle outside click
+    const handle = (e) => {
+      let registerModal = document.querySelector(".register-container");
+
+      if (
+        !registerRef.current?.contains(e.target) &&
+        isRegisterShown &&
+        registerModal
+      ) {
+        setRegisterShown(false);
+        registerModal.removeEventListener("click", handle);
+      }
+    };
+
+    // add event listener
     document
       .querySelector(".register-container")
       .addEventListener("click", handle);
 
+    // activate animation
     setMountProp(true);
-  });
-
-  // handle outside click
-  const handle = (e) => {
-    if (!registerRef.current?.contains(e.target) && isRegisterShown) {
-      setRegisterShown(false);
-      document
-        .querySelector(".register-container")
-        .removeEventListener("click", handle);
-    }
-  };
+  }, [registerRef, isRegisterShown, setRegisterShown]);
 
   // handle login link
   const handleLoginClick = () => {
@@ -48,7 +55,7 @@ export const Register = () => {
   };
 
   return (
-    <Transition in={mountProp}>
+    <Transition in={mountProp} timeout={0} nodeRef={nodeRef}>
       {(state) => (
         <div
           className="register-container"
