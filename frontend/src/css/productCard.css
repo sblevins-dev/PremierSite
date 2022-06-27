@@ -17,12 +17,26 @@
 } */
 
 .product-card {
+    position: relative;
     height: 300px;
     width: 243px;
     background-color: #FFF;
     border-radius: 10px;
     margin: 20px;
     border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.plus-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: green;
 }
 
 .product-details {
