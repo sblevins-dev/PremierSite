@@ -11,6 +11,7 @@
 }
 
 .option-wrapper {
+    position: relative;
     width: 290px;
     height: 70%;
     display: flex;
@@ -42,14 +43,49 @@
     background-color: var(--primary-color);
     width: 40px;
     height: 40px;
+    padding: 5px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.active {
+    position: absolute;
+    width: 210px;
+    left: 0;
+    justify-content: space-evenly;
+}
+
+.search-input {
+    margin-left: 5px;
+    border: none;
+    height: 100%;
+    padding-left: 5px;
+    width: 155px;
+    background-color: var(--primary-color);
+}
+
+.active input:focus-visible {
+    border: none;
+    color: red;
+}
+
+.search-exit-icon {
+    padding: 5px;
 }
 
 .cart-on-nav {
     background-color: var(--primary-color);
     height: 40px;
     width: 70px;
+    padding: 5px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
 @media (hover: hover) {
