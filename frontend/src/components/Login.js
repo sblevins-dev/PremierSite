@@ -21,14 +21,6 @@ export const Login = () => {
   // used to close modals
   const nodeRef = useRef(null);
 
-  // used to establish click of inputs
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-
-  // select form inputs
-  let emailInput = document.querySelector(".email-input");
-  let passwordInput = document.querySelector(".password-input");
-
   useEffect(() => {
     // handle outside click
     const handle = (e) => {
@@ -72,19 +64,6 @@ export const Login = () => {
     entered: { opacity: 1 },
   };
 
-  // change input size on click
-  const handleInputClick = (e) => {
-    if (emailRef.current?.contains(e.target)) {
-      emailInput.style.display = "block";
-      emailInput.focus();
-    }
-
-    if (passwordRef.current?.contains(e.target)) {
-      passwordInput.style.display = "block";
-      passwordInput.focus();
-    }
-  };
-
   // set form data
   const handleLoginInput = (e) => {
     setFormData({
@@ -97,8 +76,6 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setFormData(initialState);
-    emailInput.style.display = "none"
-    passwordInput.style.display = "none"
   };
 
   return (
@@ -130,8 +107,6 @@ export const Login = () => {
 
               <div
                 className="form-group"
-                ref={emailRef}
-                onClick={handleInputClick}
               >
                 <label htmlFor="email">Email</label>
                 <input
@@ -145,8 +120,6 @@ export const Login = () => {
               </div>
               <div
                 className="form-group"
-                ref={passwordRef}
-                onClick={handleInputClick}
               >
                 <label htmlFor="password">Password</label>
                 <input

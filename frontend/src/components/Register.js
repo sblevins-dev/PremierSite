@@ -7,9 +7,20 @@ export const Register = () => {
   const { registerRef, isRegisterShown, setRegisterShown, setLoginShown } =
     useContext(Context);
 
+  const initialState = {
+    fName: "",
+    lName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
+  const [formData, setFormData] = useState(initialState);
+
+  // used for Transition
   const [mountProp, setMountProp] = useState(false);
 
-  const nodeRef = useRef(null)
+  const nodeRef = useRef(null);
 
   useEffect(() => {
     // handle outside click
@@ -65,21 +76,37 @@ export const Register = () => {
           }}
         >
           <div className="register-modal-wrapper" ref={registerRef}>
-            <div className="register-img">hello</div>
+            <img className="register-img" src={require('../images/registerImg.jpg')} />
             <form className="register-form">
-              <h1>Register</h1>
-              <p>
-                Already have an account?{" "}
-                <span className="log-in-link" onClick={handleLoginClick}>
-                  Sign in here
-                </span>
-              </p>
+              <div className="register-modal-header">
+                <h1>Register</h1>
+                <p>
+                  Already have an account?{" "}
+                  <span className="log-in-link" onClick={handleLoginClick}>
+                    Sign in here
+                  </span>
+                </p>
+              </div>
+
               <div className="form-group">
-                <input type="email" placeholder="Email" />
+                <label htmlFor="fName">First Name</label>
+                <input id="fName" type="text" />
               </div>
               <div className="form-group">
-                <input type="password" placeholder="Password" />
+                <label htmlFor="lName">Last Name</label>
+                <input id="lName" type="text" />
               </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input type="email" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input id="password" type="password" />
+              </div>
+              <button type="submit" className="register-submit-btn">
+                Submit
+              </button>
             </form>
           </div>
         </div>
