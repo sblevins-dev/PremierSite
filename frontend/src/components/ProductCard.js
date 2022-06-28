@@ -11,7 +11,7 @@ export const ProductCard = ({ data, delay }) => {
       <div className="product-card">
         {/* {data} */}
         <FontAwesomeIcon className="plus-icon" icon={faCirclePlus} size="xl" />
-        <img className="product-img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6441/6441177_sd.jpg;maxHeight=200;maxWidth=300"></img>
+        <img className="product-img" alt="img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6441/6441177_sd.jpg;maxHeight=200;maxWidth=300"></img>
       </div>
       <div className="product-details">
         <div className="product-name">Name</div>

@@ -13,16 +13,20 @@ export const Nav = () => {
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
-    let isVisible = !isLoginShown;
-    setLoginShown(isVisible);
-    setRegisterShown(!isVisible);
+    if (isRegisterShown) {
+      setRegisterShown(false)
+    }
+
+    isLoginShown ? setLoginShown(false) : setLoginShown(true)
   };
 
   // When log in is clicked from navbar
   const handleRegisterClick = () => {
-    let isVisible = !isRegisterShown;
-    setRegisterShown(isVisible);
-    setLoginShown(!isVisible);
+    if (isLoginShown) {
+      setLoginShown(false)
+    }
+
+    isRegisterShown ? setRegisterShown(false) : setRegisterShown(true)
   };
 
   // open search box
