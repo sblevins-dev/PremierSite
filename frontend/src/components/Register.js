@@ -65,6 +65,20 @@ export const Register = () => {
     entered: { opacity: 1 },
   };
 
+  // set form data
+  const handleRegisterInput = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // submit register form
+  const handleRegister = (e) => {
+    e.preventDefault();
+    setFormData(initialState);
+  };
+
   return (
     <Transition in={mountProp} timeout={0} nodeRef={nodeRef}>
       {(state) => (
@@ -76,7 +90,11 @@ export const Register = () => {
           }}
         >
           <div className="register-modal-wrapper" ref={registerRef}>
-            <img className="register-img" src={require('../images/registerImg.jpg')} />
+            <img
+              className="register-img"
+              alt="register"
+              src={require("../images/registerImg.jpg")}
+            />
             <form className="register-form">
               <div className="register-modal-header">
                 <h1>Register</h1>
@@ -90,21 +108,59 @@ export const Register = () => {
 
               <div className="form-group">
                 <label htmlFor="fName">First Name</label>
-                <input id="fName" type="text" />
+                <input
+                  id="fName"
+                  type="text"
+                  name="fName"
+                  value={formData.fName}
+                  onChange={handleRegisterInput}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="lName">Last Name</label>
-                <input id="lName" type="text" />
+                <input
+                  id="lName"
+                  type="text"
+                  name="lName"
+                  value={formData.lName}
+                  onChange={handleRegisterInput}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input type="email" />
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleRegisterInput}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input id="password" type="password" />
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleRegisterInput}
+                />
               </div>
-              <button type="submit" className="register-submit-btn">
+              <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleRegisterInput}
+                />
+              </div>
+              <button
+                type="submit"
+                className="register-submit-btn"
+                onClick={handleRegister}
+              >
                 Submit
               </button>
             </form>

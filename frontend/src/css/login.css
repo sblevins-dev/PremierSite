@@ -35,9 +35,13 @@
     justify-content: space-evenly;
 }
 
+.login-modal-header {
+    padding-bottom: 30px;
+}
+
 .login-modal-header h1 {
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .register-link {
@@ -65,7 +69,7 @@
 }
 
 .login-form .form-group input:focus-visible {
-    border: 1px solid gray;
+    border: none;
 }
 
 .login-form .form-group label {
