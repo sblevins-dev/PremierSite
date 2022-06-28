@@ -19,8 +19,11 @@
 }
 
 .login-img {
+    height: 100%;
     width: 50%;
-    border-right: 1px solid black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    object-fit: cover;
 }
 
 .login-form {
@@ -28,11 +31,58 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
+}
+
+.login-modal-header h1 {
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .register-link {
     color: rgb(19, 102, 135);
     font-weight: bold;
+    cursor: pointer;
+}
+
+.form-group {
+    width: 90%;
+    height: 50px;
+    padding: 5px;
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group input {
+    display: none;
+    height: 100%;
+    padding: 5px;
+    text-decoration: underline;
+    background-color: rgb(231, 231, 231);
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form-group input:focus {
+    border: 1px solid gray;
+}
+
+.form-group label {
+    color: gray;
+}
+
+.login-submit-btn {
+    width: 150px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(19, 102, 135);
+    border-radius: 10px;
+    border: none;
     cursor: pointer;
 }

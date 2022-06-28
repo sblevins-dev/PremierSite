@@ -7,9 +7,27 @@ export const Login = () => {
   const { loginRef, isLoginShown, setLoginShown, setRegisterShown } =
     useContext(Context);
 
+  // initial form data
+  const initialState = {
+    email: "",
+    password: "",
+  };
+
+  const [formData, setFormData] = useState(initialState);
+
+  // used for transition
   const [mountProp, setMountProp] = useState(false);
 
-  const nodeRef = useRef(null)
+  // used to close modals
+  const nodeRef = useRef(null);
+
+  // used to establish click of inputs
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  // select form inputs
+  let emailInput = document.querySelector(".email-input");
+  let passwordInput = document.querySelector(".password-input");
 
   useEffect(() => {
     // handle outside click
@@ -54,6 +72,35 @@ export const Login = () => {
     entered: { opacity: 1 },
   };
 
+  // change input size on click
+  const handleInputClick = (e) => {
+    if (emailRef.current?.contains(e.target)) {
+      emailInput.style.display = "block";
+      emailInput.focus();
+    }
+
+    if (passwordRef.current?.contains(e.target)) {
+      passwordInput.style.display = "block";
+      passwordInput.focus();
+    }
+  };
+
+  // set form data
+  const handleLoginInput = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // login btn
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setFormData(initialState);
+    emailInput.style.display = "none"
+    passwordInput.style.display = "none"
+  };
+
   return (
     <Transition in={mountProp} timeout={0} nodeRef={nodeRef}>
       {(state) => (
@@ -65,21 +112,59 @@ export const Login = () => {
           }}
         >
           <div className="login-modal-wrapper" ref={loginRef}>
-            <div className="login-img">hello</div>
+            <img
+              className="login-img"
+              src={require("../images/loginImg.jpg")}
+              alt="login"
+            />
             <form className="login-form">
-              <h1>Login</h1>
-              <p>
-                Don't have an account?{" "}
-                <span className="register-link" onClick={handleRegisterClick}>
-                  Sign up here
-                </span>
-              </p>
-              <div className="form-group">
-                <input type="email" placeholder="Email" />
+              <div className="login-modal-header">
+                <h1>Login</h1>
+                <p>
+                  Don't have an account?{" "}
+                  <span className="register-link" onClick={handleRegisterClick}>
+                    Sign up here
+                  </span>
+                </p>
               </div>
-              <div className="form-group">
-                <input type="password" placeholder="Password" />
+
+              <div
+                className="form-group"
+                ref={emailRef}
+                onClick={handleInputClick}
+              >
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  className="email-input"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleLoginInput}
+                />
               </div>
+              <div
+                className="form-group"
+                ref={passwordRef}
+                onClick={handleInputClick}
+              >
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  className="password-input"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleLoginInput}
+                />
+              </div>
+              <button
+                type="submit"
+                className="login-submit-btn"
+                onClick={handleLogin}
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
