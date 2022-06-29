@@ -27,7 +27,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
 }
@@ -37,6 +36,17 @@
     top: 30px;
     right: 30px;
     color: green;
+}
+
+.product-img {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.moveable-img {
+    position: absolute;
+    z-index: 500;
 }
 
 .product-details {

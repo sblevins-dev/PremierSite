@@ -7,26 +7,30 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
 export const Nav = () => {
-  const { isLoginShown, setLoginShown, isRegisterShown, setRegisterShown } =
-    useContext(Context);
+  const {
+    isLoginShown,
+    setLoginShown,
+    isRegisterShown,
+    setRegisterShown,
+  } = useContext(Context);
   const [isSearchActive, setSearchActive] = useState(false);
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
     if (isRegisterShown) {
-      setRegisterShown(false)
+      setRegisterShown(false);
     }
 
-    isLoginShown ? setLoginShown(false) : setLoginShown(true)
+    isLoginShown ? setLoginShown(false) : setLoginShown(true);
   };
 
-  // When log in is clicked from navbar
+  // When register is clicked from navbar
   const handleRegisterClick = () => {
     if (isLoginShown) {
-      setLoginShown(false)
+      setLoginShown(false);
     }
 
-    isRegisterShown ? setRegisterShown(false) : setRegisterShown(true)
+    isRegisterShown ? setRegisterShown(false) : setRegisterShown(true);
   };
 
   // open search box
@@ -44,6 +48,10 @@ export const Nav = () => {
     console.log("click");
   };
 
+  // useEffect(() => {
+  //   let cart = document.querySelector(".cart-on-nav");
+  //   cartOnNav(cart);
+  // }, []);
 
   return (
     <div className="nav-container">
