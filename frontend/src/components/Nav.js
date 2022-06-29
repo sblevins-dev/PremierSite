@@ -12,8 +12,12 @@ export const Nav = () => {
     setLoginShown,
     isRegisterShown,
     setRegisterShown,
+    cart,
+    cartTotal
   } = useContext(Context);
   const [isSearchActive, setSearchActive] = useState(false);
+
+  console.log(cart)
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
@@ -96,7 +100,7 @@ export const Nav = () => {
             size="lg"
             style={{ color: "rgb(81, 81, 81)" }}
           />{" "}
-          $0
+          {cartTotal}
         </div>
       </div>
     </div>

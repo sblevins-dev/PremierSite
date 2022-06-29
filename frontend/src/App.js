@@ -10,11 +10,8 @@ import { Footer } from "./components/Footer";
 function App() {
   const [isLoginShown, setLoginShown] = useState(false);
   const [isRegisterShown, setRegisterShown] = useState(false);
+  const [cartTotal, setCartTotal] = useState(0)
 
-  const initialState = {
-    name: '',
-    price: 0
-  }
   const [cart, setCart] = useState([])
 
   const loginRef = useRef();
@@ -30,7 +27,9 @@ function App() {
         setRegisterShown,
         registerRef,
         cart,
-        setCart
+        setCart,
+        cartTotal,
+        setCartTotal
       }}
     >
       <div className="App">

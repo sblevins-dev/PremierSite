@@ -1,9 +1,16 @@
 import "../css/productCard.css";
-import { useEffect } from "react";
+import { useContext } from "react";
+import { Context } from "../contexts/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 export const ProductCard = ({ data, delay }) => {
+  const { cart, setCart, cartTotal, setCartTotal } = useContext(Context)
+  let prodPrice = 50
+
+  const addToCart = () => {
+    setCartTotal(cart += prodPrice)
+  }
   // let prodImg, cartOnNav;
 
   // useEffect(() => {
@@ -46,6 +53,7 @@ export const ProductCard = ({ data, delay }) => {
     <div
       className="product-card-wrapper product-animation"
       style={{ animationDelay: `${delay}s` }}
+      onClick={addToCart}
     >
       <div className="product-card">
         {/* {data} */}
@@ -63,7 +71,7 @@ export const ProductCard = ({ data, delay }) => {
       </div>
       <div className="product-details">
         <div className="product-name">Name</div>
-        <div className="product-price">$0</div>
+        <div className="product-price">${prodPrice}</div>
       </div>
     </div>
   );
