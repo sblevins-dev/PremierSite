@@ -28,7 +28,7 @@ export const Nav = () => {
 
   // menu state
   const [isMenuActive, setMenu] = useState(false);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
@@ -70,10 +70,10 @@ export const Nav = () => {
   // activate and reverse animation for menu
   const setMenuActive = () => {
     if (count === 0) {
-      setCount(1)
+      setCount(1);
     }
-    setMenu(!isMenuActive)
-  }
+    setMenu(!isMenuActive);
+  };
 
   return (
     <div className="nav-container">
@@ -82,14 +82,34 @@ export const Nav = () => {
         className="ham-icon"
         onClick={setMenuActive}
       />
-        <div className={isMenuActive ? "menu-wrapper menu-active" : count > 0 ? "menu-wrapper menu-inactive" : "menu-wrapper"} onClick={setMenuActive}>
-          <ul className="menu-links">
-            <Link to="/"><li>Home</li></Link>
-            <Link to="/products"><li>Products</li></Link>
-            <Link to="/cart"><li>Cart</li></Link>
-            <Link to="/about"><li>About</li></Link>
-          </ul>
-        </div>
+      <div
+        className={
+          isMenuActive
+            ? "menu-wrapper menu-active"
+            : count > 0
+            ? "menu-wrapper menu-inactive"
+            : "menu-wrapper"
+        }
+        onClick={setMenuActive}
+      >
+        <ul className="menu-links">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li className="side-menu-login-btn" onClick={handleLoginClick}>
+            Sign In
+          </li>
+        </ul>
+      </div>
 
       {/* Right Side of Nav */}
       <div className="title">Title</div>

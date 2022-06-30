@@ -71,6 +71,7 @@
     opacity: 0;
 }
 
+/* Animations */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -82,8 +83,25 @@
     }
 }
 
+/* Media Queries */
 @media (hover: hover) {
     .categories-wrapper span:hover {
         background-color: rgb(194, 194, 194);
+    }
+}
+
+@media (max-width: 500px) {
+    .categories-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .featured-wrapper {
+        height: 100%;
+        flex-wrap: wrap;
+    }
+
+    .featured-wrapper div {
+        height: 100px;
+        margin-bottom: 20px;
     }
 }

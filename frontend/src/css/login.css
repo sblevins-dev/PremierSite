@@ -85,3 +85,22 @@
     border: none;
     cursor: pointer;
 }
+
+@media (max-width: 500px) {
+    .login-container {
+        bottom: 0;
+    }
+
+    .login-modal-wrapper {
+        width: 100%;
+        height: 500px;
+    }
+
+    .login-img {
+        display: none;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+}
