@@ -1,0 +1,4 @@
+.cart-page-container {
+    min-height: calc(100vh - 200px);
+    padding-top: 60px;
+}

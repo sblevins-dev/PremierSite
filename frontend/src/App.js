@@ -1,10 +1,12 @@
 import "./css/nav.css";
 import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Context } from "./contexts/Context";
 import { Nav } from "./components/Nav";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
+import { Cart } from "./components/Cart";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -67,11 +69,16 @@ function App() {
       }}
     >
       <div className="App">
-        <Nav />
-        {isLoginShown && <Login />}
-        {isRegisterShown && <Register />}
-        <Home />
-        <Footer />
+        <Router>
+          <Nav />
+          {isLoginShown && <Login />}
+          {isRegisterShown && <Register />}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </Router>
       </div>
     </Context.Provider>
   );

@@ -1,5 +1,6 @@
 import "../css/nav.css";
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../contexts/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -92,14 +93,16 @@ export const Nav = () => {
             </>
           )}
         </div>
-        <div className="cart-on-nav">
-          <FontAwesomeIcon
-            icon={faCartShopping}
-            size="lg"
-            style={{ color: "rgb(81, 81, 81)" }}
-          />{" "}
-          <span className="cart-nav-total">${cartTotal}</span>
-        </div>
+        <Link to="/cart">
+          <div className="cart-on-nav">
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              size="lg"
+              style={{ color: "rgb(81, 81, 81)" }}
+            />{" "}
+            <span className="cart-nav-total">${cartTotal}</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
