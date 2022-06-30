@@ -1,5 +1,12 @@
 .footer-container {
     height: 200px;
     width: 100%;
-    background-color: blue;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(0, 102, 49);
+}
+
+.footer-container div {
+    color: white;
 }
