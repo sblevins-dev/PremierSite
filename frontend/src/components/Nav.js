@@ -3,8 +3,11 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../contexts/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faMagnifyingGlass,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
 export const Nav = () => {
@@ -20,7 +23,12 @@ export const Nav = () => {
   // open search bar
   const [isSearchActive, setSearchActive] = useState(false);
 
+  // cart modal state
   const [isCartModalActive, setCartModal] = useState(false);
+
+  // menu state
+  const [isMenuActive, setMenu] = useState(false);
+  const [count, setCount] = useState(0)
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
@@ -54,18 +62,34 @@ export const Nav = () => {
     setSearchActive(false);
   };
 
+  // activate cart modal
   const setCartModalActive = () => {
     setCartModal(!isCartModalActive);
   };
 
-  // useEffect(() => {
-  //   let cart = document.querySelector(".cart-on-nav");
-  //   cartOnNav(cart);
-  // }, []);
+  // activate and reverse animation for menu
+  const setMenuActive = () => {
+    if (count === 0) {
+      setCount(1)
+    }
+    setMenu(!isMenuActive)
+  }
 
   return (
     <div className="nav-container">
-      <div className="hamburger">Ham</div>
+      <FontAwesomeIcon
+        icon={faBars}
+        className="ham-icon"
+        onClick={setMenuActive}
+      />
+        <div className={isMenuActive ? "menu-wrapper menu-active" : count > 0 ? "menu-wrapper menu-inactive" : "menu-wrapper"} onClick={setMenuActive}>
+          <ul className="menu-links">
+            <Link to="/"><li>Home</li></Link>
+            <Link to="/products"><li>Products</li></Link>
+            <Link to="/cart"><li>Cart</li></Link>
+            <Link to="/about"><li>About</li></Link>
+          </ul>
+        </div>
 
       {/* Right Side of Nav */}
       <div className="title">Title</div>

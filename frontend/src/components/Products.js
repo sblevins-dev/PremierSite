@@ -1,6 +1,9 @@
+import "../css/products.css"
 
 export const Products = () => {
   return (
-    <div>Products</div>
+    <div className="products-page-wrapper">
+      <div>Products</div>
+    </div>
   )
 }
