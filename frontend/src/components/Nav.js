@@ -12,12 +12,11 @@ export const Nav = () => {
     setLoginShown,
     isRegisterShown,
     setRegisterShown,
-    cart,
-    cartTotal
+    cartTotal,
   } = useContext(Context);
-  const [isSearchActive, setSearchActive] = useState(false);
 
-  console.log(cart)
+  // open search bar
+  const [isSearchActive, setSearchActive] = useState(false);
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
@@ -49,7 +48,6 @@ export const Nav = () => {
   const handleSearchExit = () => {
     document.querySelector(".search-box").classList.remove("active");
     setSearchActive(false);
-    console.log("click");
   };
 
   // useEffect(() => {
@@ -100,7 +98,7 @@ export const Nav = () => {
             size="lg"
             style={{ color: "rgb(81, 81, 81)" }}
           />{" "}
-          {cartTotal}
+          <span className="cart-nav-total">${cartTotal}</span>
         </div>
       </div>
     </div>
