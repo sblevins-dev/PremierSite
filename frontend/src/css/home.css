@@ -23,15 +23,30 @@
     transition: all 0.4s ease-in-out;
 }
 
-.hero {
+.hero-img {
+    position: relative;
     height: 500px;
     width: 90%;
+    background: rgb(154, 206, 233) url('../images/heroImg.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
     margin: auto;
-    background-color: rgb(154, 206, 233);
     border-radius: 60px;
     animation-name: slideUp;
     animation-duration: 1s;
 }
+
+.hero-img::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.249);
+}
+
 
 .featured-wrapper {
     height: 200px;

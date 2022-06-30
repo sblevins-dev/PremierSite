@@ -36,7 +36,8 @@ export const Home = () => {
         <span>Option</span>
         <span>Option</span>
       </div>
-      <div className="hero">Hero</div>
+      <div className="hero-img"></div>
+      
 
       <div className="featured-wrapper">
         <div className="first">first</div>

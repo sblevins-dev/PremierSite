@@ -61,6 +61,7 @@
     text-transform: uppercase;
     font-weight: bold;
     color: white;
+    transition: all 0.4s ease-in-out;
 }
 
 .menu-wrapper .menu-links li {
@@ -235,8 +236,11 @@
     }
 
     .menu-wrapper .menu-links li:hover {
-        color: black;
         background-color: white;
+    }
+
+    .menu-wrapper .menu-links li:hover > a {
+        color: black;
     }
 }
 
