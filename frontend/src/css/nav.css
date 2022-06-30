@@ -89,6 +89,56 @@
     cursor: pointer;
 }
 
+.cart-modal-wrapper {
+    position: absolute;
+    bottom: -260px;
+    left: -120px;
+    height: 250px;
+    width: 280px;
+    background-color: rgb(241, 241, 241);
+    border-bottom: .5px solid black;
+    border-left: .5px solid black;
+    border-right: .5px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cart-modal-total {
+    width: 80%;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-modal-total span {
+    font-weight: bold;
+}
+
+.cart-modal-btns {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-modal-btns button {
+    width: 120px;
+    padding: 5px;
+    font-size: .7rem;
+    border: .5px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-modal-checkout {
+    background-color: rgb(241, 157, 0);
+    color: white;
+}
+
 @media (hover: hover) {
     .acct-nav-btns div:hover {
         cursor: pointer;

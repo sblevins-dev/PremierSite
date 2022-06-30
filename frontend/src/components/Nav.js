@@ -14,10 +14,13 @@ export const Nav = () => {
     isRegisterShown,
     setRegisterShown,
     cartTotal,
+    cart,
   } = useContext(Context);
 
   // open search bar
   const [isSearchActive, setSearchActive] = useState(false);
+
+  const [isCartModalActive, setCartModal] = useState(false);
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
@@ -49,6 +52,10 @@ export const Nav = () => {
   const handleSearchExit = () => {
     document.querySelector(".search-box").classList.remove("active");
     setSearchActive(false);
+  };
+
+  const setCartModalActive = () => {
+    setCartModal(!isCartModalActive);
   };
 
   // useEffect(() => {
@@ -93,16 +100,36 @@ export const Nav = () => {
             </>
           )}
         </div>
-        <Link to="/cart">
-          <div className="cart-on-nav">
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              size="lg"
-              style={{ color: "rgb(81, 81, 81)" }}
-            />{" "}
-            <span className="cart-nav-total">${cartTotal}</span>
-          </div>
-        </Link>
+        <div className="cart-on-nav" onClick={setCartModalActive}>
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            size="lg"
+            style={{ color: "rgb(81, 81, 81)" }}
+          />{" "}
+          <span className="cart-nav-total">${cartTotal}</span>
+          {isCartModalActive && (
+            <div className="cart-modal-wrapper">
+              <div className="cart-items-length">
+                You have {cart.length} item(s) in your cart!
+              </div>
+              <div className="cart-modal-total">
+                <label>Total:</label>
+                <span className="modal-total">${cartTotal}</span>
+              </div>
+              <div className="cart-modal-btns">
+                <button
+                  className="cart-modal-continue"
+                  onClick={() => setCartModal(false)}
+                >
+                  Continue Shopping
+                </button>
+                <Link to="/cart">
+                  <button className="cart-modal-checkout">Checkout</button>
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
