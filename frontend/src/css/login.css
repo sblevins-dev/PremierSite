@@ -26,6 +26,17 @@
     object-fit: cover;
 }
 
+.google-btn {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid rgb(231, 231, 231);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
 .login-form {
     width: 50%;
     padding: 20px;
@@ -35,9 +46,9 @@
     justify-content: space-evenly;
 }
 
-.login-modal-header {
+/* .login-modal-header {
     padding-bottom: 30px;
-}
+} */
 
 .login-modal-header h1 {
     text-align: center;
@@ -48,6 +59,23 @@
     color: rgb(19, 102, 135);
     font-weight: bold;
     cursor: pointer;
+}
+
+.spacer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.spacer hr {
+    width: 100%;
+    border-left: none;
+    color: rgb(231, 231, 231);
+}
+
+.spacer p {
+    padding: 0 5px;
+    color: var(--gray-font);
 }
 
 .login-form .form-group {

@@ -2,6 +2,8 @@ import "../css/login.css";
 import { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../contexts/Context";
 import { Transition } from "react-transition-group";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export const Login = () => {
   const { loginRef, isLoginShown, setLoginShown, setRegisterShown } =
@@ -105,9 +107,20 @@ export const Login = () => {
                 </p>
               </div>
 
-              <div
-                className="form-group"
-              >
+              <div className="google-btn">
+                <FontAwesomeIcon
+                  icon={faGoogle}
+                  style={{ color: "rgb(19, 102, 135)" }}
+                />
+                <span>Sign in with Google</span>
+              </div>
+              <div className="spacer">
+                <hr />
+                <p>or</p>
+                <hr />
+              </div>
+
+              <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
                   id="email"
@@ -118,9 +131,7 @@ export const Login = () => {
                   onChange={handleLoginInput}
                 />
               </div>
-              <div
-                className="form-group"
-              >
+              <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input
                   id="password"
