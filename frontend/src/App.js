@@ -1,4 +1,5 @@
 import "./css/nav.css";
+import axios from 'axios'
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Context } from "./contexts/Context";
@@ -12,6 +13,15 @@ import { About } from "./components/About";
 import { Footer } from "./components/Footer";
 
 function App() {
+
+  // state for phones from backend
+  const [phones, setPhones] = useState([])
+
+  // pull phones
+  const getPhones = () => axios.get('/phones').then(data => {
+    setPhones(data.data)
+  }).catch(err => console.log(err))
+
   // show login modal
   const [isLoginShown, setLoginShown] = useState(false);
 
@@ -48,6 +58,8 @@ function App() {
     if (cart.length > 0) {
       updateCartTotal();
     }
+
+    getPhones();
   }, [cart]);
 
   // used to click outside modals
@@ -68,6 +80,7 @@ function App() {
         cartTotal,
         setCartTotal,
         addToCart,
+        phones
       }}
     >
       <div className="App">
