@@ -7,9 +7,9 @@ export const Cart = () => {
 
   return (
     <div className="cart-page-container">
-        <ul>
+        <ul className="cart-wrapper">
             {cart.length > 0 ? cart.map(product => (
-                <li key={product.name}>{product.price}</li>
+                <li key={product.product.sku} className="cart-product">{product.product.price}</li>
             )) : (<li>Nothing in your cart yet!</li>)}
         </ul>
     </div>

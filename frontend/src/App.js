@@ -37,18 +37,19 @@ function App() {
   // update total after an item is added to a cart
   const updateCartTotal = () => {
     let sum = 0;
+    console.log(cart)
 
     if (cart.length === 0) {
       setCartTotal(0);
     } else {
-      cart.map((product) => (sum += product.price));
+      cart.map((product) => (sum += product.product.price));
     }
     setCartTotal(sum);
   };
 
   // add to cart when clicking a product
-  const addToCart = (name, price) => {
-    setCart((prevState) => [...prevState, { name, price }]);
+  const addToCart = (product) => {
+    setCart((prevState) => [...prevState, { product }]);
 
     updateCartTotal();
   };

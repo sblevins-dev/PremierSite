@@ -11,7 +11,7 @@ export const ProductCard = ({ data, delay }) => {
     <div
       className="product-card-wrapper product-animation"
       style={{ animationDelay: `${delay}s` }}
-      onClick={() => addToCart(data.prodName, data.price)}
+      onClick={() => addToCart(data)}
     >
       <div className="product-card">
         {/* {data} */}
