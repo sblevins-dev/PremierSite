@@ -38,13 +38,12 @@ function App() {
   const [cart, setCart] = useState([]);
 
   // update total after an item is added to a cart
-  const updateCartTotal = () => {
+  const updateCartTotal = (empty) => {
     let sum = 0;
-
-    if (cart.length === 0) {
+    if (cart.length === 0 || empty === 0) {
       setCartTotal(0);
     } else {
-      cart.forEach((product) => (sum += product.product.price * product.product.quantity));
+      cart.forEach((product) => sum += product.product.price * product.product.quantity);
     }
     setCartTotal(sum);
   };
@@ -93,6 +92,7 @@ function App() {
         registerRef,
         cart,
         setCart,
+        updateCartTotal,
         cartTotal,
         setCartTotal,
         addToCart,

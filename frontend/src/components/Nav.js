@@ -150,7 +150,7 @@ export const Nav = () => {
             size="lg"
             style={{ color: "rgb(81, 81, 81)" }}
           />{" "}
-          <span className="cart-nav-total">${cartTotal}</span>
+          <span className="cart-nav-total">${cartTotal === 0 ? cartTotal : cartTotal.toFixed(2)}</span>
           {isCartModalActive && (
             <div className="cart-modal-wrapper">
               <div className="cart-items-length">
