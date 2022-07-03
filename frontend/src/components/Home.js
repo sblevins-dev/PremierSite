@@ -4,7 +4,11 @@ import { ProductCard } from "./ProductCard";
 import { Context } from "../contexts/Context";
 
 export const Home = () => {
+  // phone data
   const { phones } = useContext(Context)
+
+  // home phone data
+  const samplePhones = phones.slice(0, 9);
 
   // test for samples in view
   const [inView, setInView] = useState(false)
@@ -46,7 +50,7 @@ export const Home = () => {
         <div className="third">first</div>
       </div>
       <div className="sample-products-wrapper">
-        {inView && phones.map((phone, i=1) => (
+        {inView && samplePhones.map((phone, i=1) => (
           <ProductCard key={phone.sku} data={phone} delay={i * .15} />
         ))}
       </div>
