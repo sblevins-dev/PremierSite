@@ -6,6 +6,7 @@ import { Context } from "../contexts/Context";
 
 export const ProductCard = ({ data, delay }) => {
   const { addToCart } = useContext(Context)
+  data.quantity = 1
 
   return (
     <div

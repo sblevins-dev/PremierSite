@@ -1,5 +1,5 @@
 import "./css/nav.css";
-import axios from 'axios'
+import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Context } from "./contexts/Context";
@@ -7,20 +7,23 @@ import { Nav } from "./components/Nav";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
-import { Products } from "./components/Products"
+import { Products } from "./components/Products";
 import { Cart } from "./components/Cart";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
 
 function App() {
-
   // state for phones from backend
-  const [phones, setPhones] = useState([])
+  const [phones, setPhones] = useState([]);
 
   // pull phones
-  const getPhones = () => axios.get('/phones').then(data => {
-    setPhones(data.data)
-  }).catch(err => console.log(err))
+  const getPhones = () =>
+    axios
+      .get("/phones")
+      .then((data) => {
+        setPhones(data.data);
+      })
+      .catch((err) => console.log(err));
 
   // show login modal
   const [isLoginShown, setLoginShown] = useState(false);
@@ -37,19 +40,31 @@ function App() {
   // update total after an item is added to a cart
   const updateCartTotal = () => {
     let sum = 0;
-    console.log(cart)
 
     if (cart.length === 0) {
       setCartTotal(0);
     } else {
-      cart.map((product) => (sum += product.product.price));
+      cart.forEach((product) => (sum += product.product.price * product.product.quantity));
     }
     setCartTotal(sum);
   };
 
   // add to cart when clicking a product
   const addToCart = (product) => {
-    setCart((prevState) => [...prevState, { product }]);
+    let found = false;
+
+    if (cart.length > 0) {
+      cart.forEach((prod) => {
+        if (prod.product._id === product._id) {
+          found = true
+          prod.product.quantity += 1
+        }
+      });
+    }
+
+    if ((!found && cart.length > 0) || cart.length === 0) {
+      setCart((prevState) => [...prevState, { product }])
+    }
 
     updateCartTotal();
   };
@@ -81,7 +96,7 @@ function App() {
         cartTotal,
         setCartTotal,
         addToCart,
-        phones
+        phones,
       }}
     >
       <div className="App">
