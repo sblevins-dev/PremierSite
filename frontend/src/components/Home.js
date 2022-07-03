@@ -1,9 +1,10 @@
 import "../css/home.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { ProductCard } from "./ProductCard";
+import { Context } from "../contexts/Context";
 
 export const Home = () => {
-  let myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const { phones } = useContext(Context)
 
   // test for samples in view
   const [inView, setInView] = useState(false)
@@ -45,8 +46,8 @@ export const Home = () => {
         <div className="third">first</div>
       </div>
       <div className="sample-products-wrapper">
-        {inView && myArr.map((num, i=1) => (
-          <ProductCard key={num} data={num} delay={i * .15} />
+        {inView && phones.map((phone, i=1) => (
+          <ProductCard key={phone.sku} data={phone} delay={i * .15} />
         ))}
       </div>
       <div className="featured-product-wrapper"></div>
