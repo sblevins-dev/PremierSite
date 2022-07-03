@@ -203,6 +203,11 @@
     color: white;
 }
 
+.cart-empty-checkout {
+    background-color: rgb(237, 183, 82);
+    color: white;
+}
+
 /* Animations */
 @keyframes slideIn {
     from {

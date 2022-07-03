@@ -168,7 +168,7 @@ export const Nav = () => {
                   Continue Shopping
                 </button>
                 <Link to="/cart">
-                  <button className="cart-modal-checkout">Checkout</button>
+                  {cart.length !== 0 ? <button className="cart-modal-checkout">Checkout</button> : <button className="cart-empty-checkout" disabled>Checkout</button>}
                 </Link>
               </div>
             </div>
