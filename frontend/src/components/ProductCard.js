@@ -11,13 +11,32 @@ export const ProductCard = ({ data, delay }) => {
 
   const handleClick = () => {
     if (inCart) {
-      setInCart(false)
-      removeFromCart(data)
+      setInCart(false);
+      removeFromCart(data);
     } else {
-      setInCart(true)
-      addToCart(data)
+      setInCart(true);
+      addToCart(data);
     }
   };
+
+  const addTip = document.querySelector('.add-tool-tip')
+  const removeTip = document.querySelector('.remove-tool-tip')
+
+  const handleHover = () => {
+    if (inCart) {
+      removeTip.style.visibility = 'visible'
+    } else {
+      addTip.style.visibility = 'visible'
+    }
+  }
+
+  const handleHoverEnd = () => {
+    if (inCart) {
+      removeTip.style.visibility = 'hidden'
+    } else {
+      addTip.style.visibility = 'hidden'
+    }
+  }
 
   return (
     <div
@@ -27,19 +46,29 @@ export const ProductCard = ({ data, delay }) => {
       <div className="product-card">
         {/* {data} */}
         {inCart ? (
-          <FontAwesomeIcon
-            className="minus-icon"
-            icon={faCircleMinus}
-            size="xl"
-            onClick={handleClick}
-          />
+          <>
+            <FontAwesomeIcon
+              className="minus-icon"
+              icon={faCircleMinus}
+              size="xl"
+              onClick={handleClick}
+              // onMouseOver={handleHover}
+              // onMouseLeave={handleHoverEnd}
+            />
+            {/* <span className="remove-tool-tip" style={{visibility: 'hidden'}}>Remove From Cart</span> */}
+          </>
         ) : (
-          <FontAwesomeIcon
-            className="plus-icon"
-            icon={faCirclePlus}
-            size="xl"
-            onClick={handleClick}
-          />
+          <>
+            <FontAwesomeIcon
+              className="plus-icon"
+              icon={faCirclePlus}
+              size="xl"
+              onClick={handleClick}
+              // onMouseOver={handleHover}
+              // onMouseLeave={handleHoverEnd}
+            />
+            {/* <span className="add-tool-tip" style={{visibility: 'hidden'}}>Add To Cart</span> */}
+          </>
         )}
 
         <img className="product-img" alt="img" src={data.prodImg}></img>

@@ -29,7 +29,18 @@
     background-color: green;
     border: 1px solid green;
     border-radius: 50%;
+    transition: all 0.3s ease-in-out;
 }
+
+/* .plus-icon:hover > .add-tool-tip {
+    font-size: 2rem;
+    visibility: visible;
+}
+
+.add-tool-tip {
+    background-color: red;
+    visibility: hidden;
+} */
 
 .minus-icon {
     background-color: red;
@@ -74,5 +85,17 @@
     to {
         opacity: 1;
         transform: translateY(0px);
+    }
+}
+
+@media (hover: hover) {
+    .plus-icon:hover {
+        background-color: white;
+        color: green;
+    }
+
+    .minus-icon:hover {
+        background-color: white;
+        color: red;
     }
 }
