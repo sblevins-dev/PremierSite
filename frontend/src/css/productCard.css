@@ -21,11 +21,19 @@
     transition: all 0.4s ease-in-out;
 }
 
-.plus-icon {
+.plus-icon, .minus-icon {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    color: green;
+    top: 20px;
+    right: 20px;
+    color: white;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 50%;
+}
+
+.minus-icon {
+    background-color: red;
+    border: 1px solid red;
 }
 
 .product-img {

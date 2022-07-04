@@ -68,14 +68,23 @@ function App() {
     updateCartTotal();
   };
 
+  // remove from cart on click
+  const removeFromCart = (product) => {
+    setCart(cart.filter(prod => prod.product._id !== product._id))
+
+    updateCartTotal()
+  }
+
   // used to update cart when cart changes
   useEffect(() => {
     if (cart.length > 0) {
       updateCartTotal();
+    } else {
+      updateCartTotal(0)
     }
 
     getPhones();
-  }, [cart]);
+  }, [cart.length]);
 
   // used to click outside modals
   const loginRef = useRef();
@@ -97,6 +106,7 @@ function App() {
         setCartTotal,
         addToCart,
         phones,
+        removeFromCart
       }}
     >
       <div className="App">
