@@ -1,14 +1,19 @@
 import "../css/productCard.css";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../contexts/Context";
 
 export const ProductCard = ({ data, delay }) => {
   const { addToCart, removeFromCart } = useContext(Context);
+
+  // flag to keep track of item if it is in the cart
   const [inCart, setInCart] = useState(false);
   data.quantity = 1;
 
+  // add or remove from cart
   const handleClick = () => {
     if (inCart) {
       setInCart(false);
@@ -19,31 +24,41 @@ export const ProductCard = ({ data, delay }) => {
     }
   };
 
-  const addTip = document.querySelector('.add-tool-tip')
-  const removeTip = document.querySelector('.remove-tool-tip')
+  const navigate = useNavigate();
 
-  const handleHover = () => {
-    if (inCart) {
-      removeTip.style.visibility = 'visible'
-    } else {
-      addTip.style.visibility = 'visible'
-    }
-  }
+  // go to the product description
+  const handleProductClick = (data) => {
+    const { sku, price, prodDesc, prodImg, quantity, _id } = data;
+    const state = { sku, price, prodDesc, prodImg, quantity, _id };
+    navigate("/product", {state});
+  };
 
-  const handleHoverEnd = () => {
-    if (inCart) {
-      removeTip.style.visibility = 'hidden'
-    } else {
-      addTip.style.visibility = 'hidden'
-    }
-  }
+  // working on tooltips
+  // const addTip = document.querySelector('.add-tool-tip')
+  // const removeTip = document.querySelector('.remove-tool-tip')
+
+  // const handleHover = () => {
+  //   if (inCart) {
+  //     removeTip.style.visibility = 'visible'
+  //   } else {
+  //     addTip.style.visibility = 'visible'
+  //   }
+  // }
+
+  // const handleHoverEnd = () => {
+  //   if (inCart) {
+  //     removeTip.style.visibility = 'hidden'
+  //   } else {
+  //     addTip.style.visibility = 'hidden'
+  //   }
+  // }
 
   return (
     <div
       className="product-card-wrapper product-animation"
       style={{ animationDelay: `${delay}s` }}
     >
-      <div className="product-card">
+      <div className="product-card" onClick={() => handleProductClick(data)}>
         {/* {data} */}
         {inCart ? (
           <>

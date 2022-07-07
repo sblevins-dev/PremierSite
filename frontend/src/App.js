@@ -7,6 +7,7 @@ import { Nav } from "./components/Nav";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
+import { Product } from "./components/Product";
 import { Products } from "./components/Products";
 import { Cart } from "./components/Cart";
 import { About } from "./components/About";
@@ -116,6 +117,7 @@ function App() {
           {isRegisterShown && <Register />}
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/product" element={<Product />} />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
