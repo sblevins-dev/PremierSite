@@ -13,25 +13,28 @@ export const Cart = () => {
 
   const decreaseQuantity = (product) => {
     if (product.product.quantity <= 1) {
-      let newCart = cart.filter(prod => prod.product._id !== product.product._id)
-      setCart(newCart)
+      let newCart = cart.filter(
+        (prod) => prod.product._id !== product.product._id
+      );
+      setCart(newCart);
 
       if (newCart.length === 0) {
-        updateCartTotal(0)
+        updateCartTotal(0);
       } else {
-        updateCartTotal()
+        updateCartTotal();
       }
-      
     } else {
-      product.product.quantity -= 1
-      updateCartTotal()
+      product.product.quantity -= 1;
+      updateCartTotal();
     }
-  }
+  };
 
   const increaseQuantity = (product) => {
-    product.product.quantity += 1
-    updateCartTotal()
-  }
+    if (!(product.product.quantity >= 10)) {
+      product.product.quantity += 1;
+      updateCartTotal();
+    }
+  };
 
   return (
     <div className="cart-page-container">

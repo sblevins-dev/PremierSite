@@ -1,20 +1,29 @@
 import "../css/productCard.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../contexts/Context";
 
 export const ProductCard = ({ data, delay }) => {
-  const { addToCart, removeFromCart } = useContext(Context);
+  const { cart, addToCart, removeFromCart } = useContext(Context);
+
+  const cardRef = useRef();
 
   // flag to keep track of item if it is in the cart
   const [inCart, setInCart] = useState(false);
   data.quantity = 1;
 
+  useEffect(() => {
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].product._id === data._id) {
+        setInCart(true)
+      }
+    }
+  }, [ addToCart ])
+
   // add or remove from cart
-  const handleClick = () => {
+  const handleClick = (e) => {
     if (inCart) {
       setInCart(false);
       removeFromCart(data);
@@ -27,10 +36,12 @@ export const ProductCard = ({ data, delay }) => {
   const navigate = useNavigate();
 
   // go to the product description
-  const handleProductClick = (data) => {
-    const { sku, price, prodDesc, prodImg, quantity, _id } = data;
-    const state = { sku, price, prodDesc, prodImg, quantity, _id };
-    navigate("/product", {state});
+  const handleProductClick = (e, data) => {
+    if (cardRef.current?.contains(e.target)) {
+      const { sku, price, prodName, prodDesc, prodImg, quantity, _id } = data;
+      const state = { sku, price, prodName, prodDesc, prodImg, quantity, _id };
+      navigate("/product", { state });
+    }
   };
 
   // working on tooltips
@@ -58,9 +69,7 @@ export const ProductCard = ({ data, delay }) => {
       className="product-card-wrapper product-animation"
       style={{ animationDelay: `${delay}s` }}
     >
-      <div className="product-card" onClick={() => handleProductClick(data)}>
-        {/* {data} */}
-        {inCart ? (
+      {inCart ? (
           <>
             <FontAwesomeIcon
               className="minus-icon"
@@ -85,7 +94,11 @@ export const ProductCard = ({ data, delay }) => {
             {/* <span className="add-tool-tip" style={{visibility: 'hidden'}}>Add To Cart</span> */}
           </>
         )}
-
+      <div
+        className="product-card"
+        onClick={(e) => handleProductClick(e, data)}
+        ref={cardRef}
+      >
         <img className="product-img" alt="img" src={data.prodImg}></img>
       </div>
       <div className="product-details">

@@ -158,7 +158,7 @@ export const Nav = () => {
               </div>
               <div className="cart-modal-total">
                 <label>Total:</label>
-                <span className="modal-total">${cartTotal}</span>
+                <span className="modal-total">${cartTotal.toFixed(2)}</span>
               </div>
               <div className="cart-modal-btns">
                 <button

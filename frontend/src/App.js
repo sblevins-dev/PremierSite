@@ -44,44 +44,48 @@ function App() {
     if (cart.length === 0 || empty === 0) {
       setCartTotal(0);
     } else {
-      cart.forEach((product) => sum += product.product.price * product.product.quantity);
+      cart.forEach(
+        (product) => (sum += product.product.price * product.product.quantity)
+      );
     }
     setCartTotal(sum);
   };
 
   // add to cart when clicking a product
   const addToCart = (product) => {
-    let found = false;
+    if (product.quantity > 0) {
+      let found = false;
 
-    if (cart.length > 0) {
-      cart.forEach((prod) => {
-        if (prod.product._id === product._id) {
-          found = true
-          prod.product.quantity += 1
-        }
-      });
+      if (cart.length > 0) {
+        cart.forEach((prod) => {
+          if (prod.product._id === product._id) {
+            found = true;
+            prod.product.quantity += 1;
+          }
+        });
+      }
+
+      if ((!found && cart.length > 0) || cart.length === 0) {
+        setCart((prevState) => [...prevState, { product }]);
+      }
+
+      updateCartTotal();
     }
-
-    if ((!found && cart.length > 0) || cart.length === 0) {
-      setCart((prevState) => [...prevState, { product }])
-    }
-
-    updateCartTotal();
   };
 
   // remove from cart on click
   const removeFromCart = (product) => {
-    setCart(cart.filter(prod => prod.product._id !== product._id))
+    setCart(cart.filter((prod) => prod.product._id !== product._id));
 
-    updateCartTotal()
-  }
+    updateCartTotal();
+  };
 
   // used to update cart when cart changes
   useEffect(() => {
     if (cart.length > 0) {
       updateCartTotal();
     } else {
-      updateCartTotal(0)
+      updateCartTotal(0);
     }
 
     getPhones();
@@ -107,7 +111,7 @@ function App() {
         setCartTotal,
         addToCart,
         phones,
-        removeFromCart
+        removeFromCart,
       }}
     >
       <div className="App">
