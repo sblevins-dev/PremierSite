@@ -179,6 +179,10 @@
   justify-content: space-evenly;
 }
 
+.cart-details a {
+  align-self: center;
+}
+
 .cart-details h2 {
   text-align: right;
 }
@@ -199,7 +203,6 @@
 
 .cart-checkout {
   width: 150px;
-  align-self: center;
   padding: 10px;
   color: white;
   background-color: orange;

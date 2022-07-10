@@ -10,6 +10,7 @@ import { Home } from "./components/Home";
 import { Product } from "./components/Product";
 import { Products } from "./components/Products";
 import { Cart } from "./components/Cart";
+import { Checkout } from "./components/Checkout";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
 
@@ -124,6 +125,7 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/about" element={<About />} />
           </Routes>
           <Footer />

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../contexts/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -108,7 +109,7 @@ export const Cart = () => {
             By not clicking this you release liability from seller for any
             shipping problems
           </div>
-          <button className="cart-checkout">Checkout</button>
+          <Link to="/checkout"><button className="cart-checkout">Checkout</button></Link>
           <div className="cart-pay-types">AMEX</div>
         </div>
       </div>
