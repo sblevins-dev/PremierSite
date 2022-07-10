@@ -1,13 +1,95 @@
 .checkout-page-container {
-    padding: 70px 20px 20px;
-    min-height: calc(100vh - 200px);
+  padding: 70px 20px 20px;
+  min-height: calc(100vh - 200px);
 }
 
 .checkout-page-container h1 {
-    font-size: 2rem;
+  font-size: 2rem;
+  margin-bottom: 50px;
 }
 
 .sections {
-    display: flex;
-    justify-content: space-between;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-section,
+.right-section {
+  width: 50%;
+}
+
+.shipping-wrapper {
+  height: 100%;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.shipping-wrapper h2 {
+  margin-bottom: 20px;
+}
+
+.shipping-wrapper .form-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shipping-wrapper .form-group:nth-child(2) input {
+  width: 160px;
+}
+
+.shipping-wrapper .form-group:nth-child(2) input:last-child {
+  margin-left: 5px;
+}
+
+.shipping-wrapper .form-group:nth-child(4) input {
+  width: 100px;
+}
+
+.shipping-wrapper input {
+  height: 40px;
+  padding: 5px;
+  background-color: rgb(233, 233, 233);
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.shipping-method-wrapper {
+  height: 100%;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.information-wrapper {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.checkout-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.checkout-btns button {
+  width: 150px;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  cursor: pointer;
 }
