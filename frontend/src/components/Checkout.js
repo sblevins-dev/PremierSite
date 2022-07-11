@@ -7,20 +7,23 @@ import { faUps } from "@fortawesome/free-brands-svg-icons";
 
 export const Checkout = () => {
   const navigate = useNavigate();
-  const { cart, cartTotal } = useContext(Context);
+  const { cart, cartTotal, setCart } = useContext(Context);
 
   // used for billing address
   const [checked, setIsChecked] = useState(false);
 
   // go home if empty cart
+  const [tempCart, setTempCart] = useState(cart)
+  const [tempCartTotal, setTempCartTotal] = useState(cartTotal)
+
   useEffect(() => {
-    if (cart.length === 0) {
+    if (cart.length === 0 && flag !== 'success') {
       navigate("/");
     }
   }, [cart]);
 
   // calculate tax
-  const tax = (cartTotal * 0.07).toFixed(2);
+  const tax = (tempCartTotal * 0.07).toFixed(2);
 
   // used flags to step through checkout process
   const [flag, setFlag] = useState("shipping");
@@ -147,7 +150,6 @@ export const Checkout = () => {
   const payNow = (e) => {
     e.preventDefault();
     const { cardType, cardNum, fName, lName, exp, cvv } = paymentMethod;
-    console.log(paymentMethod)
     if (
       cardNum !== "" &&
       cardNum !== 0 &&
@@ -157,6 +159,7 @@ export const Checkout = () => {
       cvv !== 0
     ) {
       setFlag("success");
+      setCart([])
     }
   };
 
@@ -311,7 +314,7 @@ export const Checkout = () => {
                     <label forhtml="cardType">Mastercard</label>
                   </div>
                 </div>
-                <div>
+                <div className="names">
                   <input
                     type="text"
                     name="fName"
@@ -334,7 +337,7 @@ export const Checkout = () => {
                   pattern="[0-9\s]{13, 19}"
                   onChange={handlePaymentChange}
                 />
-                <div>
+                <div className="card-exp">
                   <input
                     type="text"
                     name="exp"
@@ -434,6 +437,7 @@ export const Checkout = () => {
             <div className="success">
               <h2>Success</h2>
               <p>Your items are on there way!</p>
+              <button onClick={() => navigate('/')}>Return To Home</button>
             </div>
           )}
         </div>
@@ -462,14 +466,14 @@ export const Checkout = () => {
             )}
           </div>
           <div className="checkout-cart">
-            <h2>{cart.length} item/s in cart</h2>
+            <h2>{tempCart.length} item/s in cart</h2>
             <ul>
-              {cart.map((item) => (
+              {tempCart.map((item) => (
                 <li key={item.product._id}>
                   <img src={item.product.prodImg} alt={item.product.prodName} />
                   <div>
                     <p>{item.product.prodName}</p>
-                    <p>{item.product.price}</p>
+                    <p>${item.product.price}</p>
                   </div>
                 </li>
               ))}
@@ -477,7 +481,7 @@ export const Checkout = () => {
             <hr></hr>
             <div className="cart-details">
               <span>
-                <p>Subtotal:</p> <p>${cartTotal.toFixed(2)}</p>{" "}
+                <p>Subtotal:</p> <p>${tempCartTotal.toFixed(2)}</p>{" "}
               </span>
               <span>
                 <p>Shipping: </p> <p>{shippingMethod.split(":")[1]}</p>

@@ -207,6 +207,19 @@
   justify-content: space-between;
 }
 
+.payment-method .names, .payment-method .card-exp {
+  width: 100%;
+  overflow: hidden;
+}
+
+.payment-method .names input {
+  width: 48%;
+}
+
+.payment-method .card-exp input {
+  width: 48%;
+}
+
 .payment-method input {
   margin-bottom: 20px;
   padding: 10px;
@@ -297,7 +310,7 @@
 }
 
 .checkout-cart ul li img {
-  height: 100px;
+  width: 50px;
   margin-right: 10px;
 }
 
@@ -316,4 +329,82 @@
 
 .cart-details span p:last-child {
   font-weight: bolder;
+}
+
+.success {
+  height: 200px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.success button {
+  width: 150px;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .checkout-page-container {
+    padding: 70px 5px 5px;
+  }
+
+  .sections {
+    flex-direction: column;
+  }
+
+  .left-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .right-section {
+    max-width: 100%;
+  }
+
+  .shipping-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .information-wrapper {
+    width: 100%;
+  }
+
+  .shipping-method-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .payment-method {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .billing-address {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .success {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .checkout-cart {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .checkout-cart .cart-details {
+    max-width: 100%;
+  }
 }

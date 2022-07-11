@@ -82,3 +82,21 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@media (max-width: 500px) {
+  .product-page-container {
+    width: 100vw;
+    padding: 70px 5px 5px;
+    flex-direction: column;
+  }
+
+  .product-page-container img {
+    padding: 20px 0;
+  }
+
+  .product-desc-wrapper {
+    width: 90vw;
+    max-width: 100vw;
+    padding: 10px;
+  }
+}
