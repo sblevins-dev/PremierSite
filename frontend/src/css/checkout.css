@@ -3,21 +3,27 @@
   min-height: calc(100vh - 200px);
 }
 
-.checkout-page-container h1 {
-  font-size: 2rem;
-  margin-bottom: 50px;
-}
-
 .sections {
   height: 100%;
   display: flex;
+  justify-content: space-between;
+}
+
+.left-section {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.left-section,
+.left-section h1 {
+  padding: 50px 0;
+}
+
 .right-section {
-  width: 50%;
+  margin: auto;
 }
 
 .shipping-wrapper {
@@ -41,7 +47,7 @@
 }
 
 .shipping-wrapper .form-group:nth-child(2) input {
-  width: 160px;
+  width: 90%;
 }
 
 .shipping-wrapper .form-group:nth-child(2) input:last-child {
@@ -49,7 +55,7 @@
 }
 
 .shipping-wrapper .form-group:nth-child(4) input {
-  width: 100px;
+  width: 33%;
 }
 
 .shipping-wrapper input {
@@ -77,11 +83,18 @@
 }
 
 .shipping-method-wrapper div {
-  width: 100%;
-  margin-bottom: 20px;
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.shipping-method-wrapper div .ups {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  margin: auto;
+  color: rgb(61, 52, 1);
+  background-color: transparent;
+  border-radius: 50%;
 }
 
 .shipping-method-wrapper div input {
@@ -92,9 +105,28 @@
 .shipping-method-wrapper div label {
   height: 100%;
   width: 100%;
+  margin-left: 10px;
   padding: 10px;
   border-radius: 5px;
-  background-color: lightgray;
+  background-color: rgb(238, 238, 238);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shipping-method-wrapper div label div {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 0;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.shipping-method-wrapper div label div p {
+  margin-top: 5px;
 }
 
 .shipping-method-wrapper .shipping-method-btns {
@@ -115,10 +147,28 @@
 }
 
 .information-wrapper {
-  width: 50%;
+  width: 70%;
   padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.information-wrapper div {
+  margin-bottom: 10px;
+}
+
+.information-wrapper .contact-info, .information-wrapper .shipping-information, .information-wrapper .shipping-method-info {
+  position: relative;
+}
+
+.information-wrapper .contact-info p:last-child, .information-wrapper .shipping-information p:last-child, .information-wrapper .shipping-method-info p:last-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
 }
 
 .checkout-btns {
@@ -168,6 +218,7 @@
 .billing-address {
   height: 100%;
   width: 70%;
+  min-width: 235px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
@@ -197,11 +248,24 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: lightgray;
+  background-color: rgb(230, 230, 230);
+}
+
+.billing-address .second-option div {
+  padding-top: 30px;
+}
+
+.billing-address .second-option div input {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(230, 230, 230);
+  border: none;
+  border-radius: 5px;
 }
 
 .billing-address .billing-btns {
-  margin-top: 20px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-around;
 }
@@ -214,4 +278,42 @@
   border: 0.5px solid black;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.checkout-cart {
+  width: 430px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.checkout-cart h2 {
+  margin-bottom: 20px;
+}
+
+.checkout-cart ul li {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.checkout-cart ul li img {
+  height: 100px;
+  margin-right: 10px;
+}
+
+.checkout-cart ul li div p:last-child {
+  padding-top: 10px;
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+
+.cart-details span {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-details span p:last-child {
+  font-weight: bolder;
 }
