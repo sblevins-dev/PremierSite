@@ -72,6 +72,48 @@
   justify-content: space-evenly;
 }
 
+.shipping-method-wrapper h2 {
+  margin-bottom: 20px;
+}
+
+.shipping-method-wrapper div {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.shipping-method-wrapper div input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.shipping-method-wrapper div label {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.shipping-method-wrapper .shipping-method-btns {
+  background-color: transparent;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.shipping-method-wrapper .shipping-method-btns button {
+  width: 150px;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .information-wrapper {
   width: 50%;
   padding: 10px;
@@ -85,6 +127,86 @@
 }
 
 .checkout-btns button {
+  width: 150px;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.payment-method {
+  height: 100%;
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.payment-method h2 {
+  margin-bottom: 20px;
+}
+
+.payment-method div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-method input {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgb(237, 237, 237);
+  border: none;
+  border-radius: 5px;
+}
+
+.billing-address {
+  height: 100%;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.billing-address h2 {
+  margin-bottom: 20px;
+}
+
+.billing-address div {
+  width: 100%;
+}
+
+.billing-address div input {
+  margin-right: 10px;
+}
+
+.billing-address .first-option {
+  margin-bottom: 50px;
+}
+
+.billing-address div label {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.billing-address .billing-btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.billing-address .billing-btns button {
   width: 150px;
   padding: 10px;
   color: white;
