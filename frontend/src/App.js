@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Context } from "./contexts/Context";
 import { Nav } from "./components/Nav";
+import { NavTest } from "./components/NavTest";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
@@ -117,7 +118,8 @@ function App() {
     >
       <div className="App">
         <Router>
-          <Nav />
+          {/* <Nav /> */}
+          <NavTest />
           {isLoginShown && <Login />}
           {isRegisterShown && <Register />}
           <Routes>

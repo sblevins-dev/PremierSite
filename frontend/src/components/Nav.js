@@ -2,11 +2,11 @@ import "../css/nav.css";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../contexts/Context";
+import { MuiDrawer } from "./MuiDrawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
   faMagnifyingGlass,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
@@ -25,10 +25,6 @@ export const Nav = () => {
 
   // cart modal state
   const [isCartModalActive, setCartModal] = useState(false);
-
-  // menu state
-  const [isMenuActive, setMenu] = useState(false);
-  const [count, setCount] = useState(0);
 
   // When log in is clicked from navbar
   const handleLoginClick = () => {
@@ -67,49 +63,9 @@ export const Nav = () => {
     setCartModal(!isCartModalActive);
   };
 
-  // activate and reverse animation for menu
-  const setMenuActive = () => {
-    if (count === 0) {
-      setCount(1);
-    }
-    setMenu(!isMenuActive);
-  };
-
   return (
     <div className="nav-container">
-      <FontAwesomeIcon
-        icon={faBars}
-        className="ham-icon"
-        onClick={setMenuActive}
-      />
-      <div
-        className={
-          isMenuActive
-            ? "menu-wrapper menu-active"
-            : count > 0
-            ? "menu-wrapper menu-inactive"
-            : "menu-wrapper"
-        }
-        onClick={setMenuActive}
-      >
-        <ul className="menu-links">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/products">Products</Link>
-          </li>
-          <li>
-            <Link to="/cart">Cart</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li className="side-menu-login-btn" onClick={handleLoginClick}>
-            Sign In
-          </li>
-        </ul>
-      </div>
+      <MuiDrawer />
 
       {/* Right Side of Nav */}
       <div className="title">Title</div>
