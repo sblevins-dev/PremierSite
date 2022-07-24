@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Context } from "./contexts/Context";
 import { Nav } from "./components/Nav";
-import { NavTest } from "./components/NavTest";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
@@ -14,6 +13,18 @@ import { Cart } from "./components/Cart";
 import { Checkout } from "./components/Checkout";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "rgb(19, 102, 135)"
+    },
+    secondary: {
+      main: "rgb(255, 0, 40)"
+    }
+  }
+})
 
 function App() {
   // state for phones from backend
@@ -116,10 +127,10 @@ function App() {
         removeFromCart,
       }}
     >
-      <div className="App">
+      <ThemeProvider theme={theme}>
+        <div className="App">
         <Router>
-          {/* <Nav /> */}
-          <NavTest />
+          <Nav />
           {isLoginShown && <Login />}
           {isRegisterShown && <Register />}
           <Routes>
@@ -133,6 +144,8 @@ function App() {
           <Footer />
         </Router>
       </div>
+      </ThemeProvider>
+      
     </Context.Provider>
   );
 }

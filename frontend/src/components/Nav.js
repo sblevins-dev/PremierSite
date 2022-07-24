@@ -1,136 +1,141 @@
-import "../css/nav.css";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Stack,
+  Divider,
+  styled,
+  alpha,
+} from "@mui/material";
+import { makeStyles } from "@material-ui/core/styles";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
+import { MuiDrawer } from "./MuiDrawer";
+import InputBase from "@mui/material/InputBase";
+
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../contexts/Context";
-import { MuiDrawer } from "./MuiDrawer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+
+const useStyles = makeStyles((theme) => ({
+  navBar: {
+    justifyContent: "space-between",
+    backgroundColor: theme.palette.secondary.main,
+    color: "black",
+    position: "relative",
+  },
+  signIn: {
+    cursor: "pointer",
+  },
+  title: {
+    position: "absolute",
+    left: "50%",
+    transform: "translateX(-50%)",
+  },
+  rightSide: {
+    display: "flex",
+    alignItems: "center",
+  },
+  cartOnNav: {
+    paddingLeft: "5px",
+  },
+}));
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.85),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.95),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 1),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 0, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(.5em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100px",
+    [theme.breakpoints.up("sm")]: {
+      width: "0ch",
+      "&:focus": {
+        width: "15ch",
+      },
+    },
+  },
+}));
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
 export const Nav = () => {
   const {
+    cartTotal,
+    cart,
     isLoginShown,
     setLoginShown,
     isRegisterShown,
     setRegisterShown,
-    cartTotal,
-    cart,
   } = useContext(Context);
-
-  // open search bar
-  const [isSearchActive, setSearchActive] = useState(false);
-
-  // cart modal state
-  const [isCartModalActive, setCartModal] = useState(false);
-
-  // When log in is clicked from navbar
-  const handleLoginClick = () => {
-    if (isRegisterShown) {
-      setRegisterShown(false);
-    }
-
-    isLoginShown ? setLoginShown(false) : setLoginShown(true);
-  };
-
-  // When register is clicked from navbar
-  const handleRegisterClick = () => {
-    if (isLoginShown) {
-      setLoginShown(false);
-    }
-
-    isRegisterShown ? setRegisterShown(false) : setRegisterShown(true);
-  };
-
-  // open search box
-  const handleSearchClick = () => {
-    if (!isSearchActive) {
-      document.querySelector(".search-box").classList.add("active");
-      setSearchActive(true);
-    }
-  };
-
-  // exit search box
-  const handleSearchExit = () => {
-    document.querySelector(".search-box").classList.remove("active");
-    setSearchActive(false);
-  };
-
-  // activate cart modal
-  const setCartModalActive = () => {
-    setCartModal(!isCartModalActive);
-  };
+  const classes = useStyles();
 
   return (
-    <div className="nav-container">
-      <MuiDrawer />
-
-      {/* Right Side of Nav */}
-      <div className="title">Title</div>
-      <div className="option-wrapper">
-        <div className="acct-nav-btns">
-          <div className="login-btn" onClick={handleLoginClick}>
-            Log In
+    <AppBar>
+      <Toolbar className={classes.navBar} >
+        <MuiDrawer />
+        <Typography variant="h6" component="div" className={classes.title}>
+          Title
+        </Typography>
+        <div className={classes.rightSide}>
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={2}
+          >
+            <div className={classes.signIn} onClick={setLoginShown} >Log In</div>
+            <div className={classes.signIn} onClick={setRegisterShown} >Register</div>
+          </Stack>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase inputProps={{ "aria-label": "search" }} />
+          </Search>
+          <div className={classes.cartOnNav}>
+            <IconButton aria-label="cart">
+              <StyledBadge badgeContent={cart.length} color="primary">
+                <ShoppingCartIcon sx={{ color: "grey" }} />
+              </StyledBadge>
+            </IconButton>
           </div>
-          <span>|</span>
-          <div className="create-acct-btn" onClick={handleRegisterClick}>
-            Create Account
-          </div>
         </div>
-        <div className="search-box" onClick={handleSearchClick}>
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            size="lg"
-            style={{ color: "rgb(81, 81, 81)" }}
-          />
-          {isSearchActive && (
-            <>
-              <input
-                type="text"
-                className="search-input"
-                placeholder="Search..."
-              />
-              <FontAwesomeIcon
-                className="search-exit-icon"
-                icon={faX}
-                onClick={handleSearchExit}
-              />
-            </>
-          )}
-        </div>
-        <div className="cart-on-nav" onClick={setCartModalActive}>
-          <FontAwesomeIcon
-            icon={faCartShopping}
-            size="lg"
-            style={{ color: "rgb(81, 81, 81)" }}
-          />{" "}
-          <span className="cart-nav-total">${cartTotal === 0 ? cartTotal : cartTotal.toFixed(2)}</span>
-          {isCartModalActive && (
-            <div className="cart-modal-wrapper">
-              <div className="cart-items-length">
-                You have {cart.length} item(s) in your cart!
-              </div>
-              <div className="cart-modal-total">
-                <label>Total:</label>
-                <span className="modal-total">${cartTotal.toFixed(2)}</span>
-              </div>
-              <div className="cart-modal-btns">
-                <button
-                  className="cart-modal-continue"
-                  onClick={() => setCartModal(false)}
-                >
-                  Continue Shopping
-                </button>
-                <Link to="/cart">
-                  {cart.length !== 0 ? <button className="cart-modal-checkout">Checkout</button> : <button className="cart-empty-checkout" disabled>Checkout</button>}
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+      </Toolbar>
+    </AppBar>
   );
 };
